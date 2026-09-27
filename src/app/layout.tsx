@@ -34,7 +34,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Madi Alenov — Backend & Systems Engineer",
+  title: "Madi Alenov — Backend & Systems",
   description:
     "Personal engineering portfolio of Madi Alenov. Focused on high-performance APIs, asynchronous pipelines, clean architecture, and container orchestration.",
   keywords: [

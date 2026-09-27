@@ -57,7 +57,7 @@ export function BentoGrid({ onOpenForgeModal }: BentoGridProps) {
         <div className="flex items-center gap-2">
           <span className="text-[#ededed] font-medium">Madi Alenov</span>
           <span className="hidden sm:inline text-white/30">•</span>
-          <span className="hidden sm:inline text-[#a1a1aa]">Backend & Systems Engineer</span>
+          <span className="hidden sm:inline text-[#a1a1aa]">Backend & Systems</span>
         </div>
 
         <div className="flex items-center gap-3">
@@ -93,7 +93,7 @@ export function BentoGrid({ onOpenForgeModal }: BentoGridProps) {
                 Madi Alenov
               </h1>
               <p className="text-xs font-mono text-[#06b6d4] mt-0.5">
-                Backend & Systems Engineer
+                Backend & Systems
               </p>
               <div className="flex items-center gap-1 text-[11px] font-mono text-[#71717a] mt-0.5">
                 <span>Astana, Kazakhstan</span>
@@ -103,9 +103,10 @@ export function BentoGrid({ onOpenForgeModal }: BentoGridProps) {
 
           {/* Conversational Bio */}
           <p className="text-xs sm:text-[13px] text-[#a1a1aa] leading-relaxed">
-            I build backend services, deterministic state machines, and single-node PaaS
-            infrastructure. Most of my work centers around Python internals, low-latency APIs, and
-            zero-downtime container deployments without bloated distributed dependencies.
+              Software Engineer focused on backend development and
+              system architecture. Experienced in designing and building
+              reliable web applications, solving technical problems, and
+              contributing across the software development lifecycle.
           </p>
 
 

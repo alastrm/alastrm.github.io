@@ -1,54 +1,25 @@
 import type { Metadata } from "next";
-import { Geist, JetBrains_Mono } from "next/font/google";
-import localFont from "next/font/local";
+import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const zodiak = localFont({
-  src: [
-    {
-      path: "../../fonts/WEB/fonts/Zodiak-Variable.woff2",
-      style: "normal",
-      weight: "300 900",
-    },
-    {
-      path: "../../fonts/WEB/fonts/Zodiak-VariableItalic.woff2",
-      style: "italic",
-      weight: "300 900",
-    },
-  ],
-  variable: "--font-zodiak",
-  display: "swap",
-});
-
-const geistSans = Geist({
-  subsets: ["latin"],
+const plexSans = IBM_Plex_Sans({
+  subsets: ["latin", "cyrillic"],
   variable: "--font-sans",
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin", "cyrillic"],
   variable: "--font-mono",
+  weight: ["400", "500"],
   display: "swap",
-  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
   title: "Madi Alenov — Backend & Systems",
   description:
-    "Personal engineering portfolio of Madi Alenov. Focused on high-performance APIs, asynchronous pipelines, clean architecture, and container orchestration.",
-  keywords: [
-    "Madi Alenov",
-    "Backend Engineer",
-    "Systems Engineer",
-    "Python",
-    "FastAPI",
-    "Docker",
-    "Traefik",
-    "PostgreSQL",
-    "Redis",
-    "Distributed Systems",
-  ],
+    "Personal engineering portfolio of Madi Alenov. Focused on backend services, container orchestration, deterministic state machines, and system architecture.",
 };
 
 export default function RootLayout({
@@ -59,9 +30,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${jetbrainsMono.variable} ${zodiak.variable} dark`}
+      className={`${plexSans.variable} ${plexMono.variable}`}
     >
-      <body className="min-h-screen bg-[#09090b] text-[#ededed] font-sans antialiased selection:bg-[#22c55e]/25 selection:text-white">
+      <body className="min-h-screen bg-[var(--bg)] text-[var(--fg)] font-sans antialiased selection:bg-[var(--accent)] selection:text-white">
         {children}
       </body>
     </html>

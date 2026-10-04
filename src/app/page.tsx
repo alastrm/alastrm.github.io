@@ -10,7 +10,7 @@ import {
   FastApiIcon,
 } from "@/components/TechIcons";
 import { FaGithub, FaTelegram, FaEnvelope } from "react-icons/fa";
-import { ChevronRight, Terminal } from "lucide-react";
+import { ChevronRight, Terminal, Smartphone, ArrowUpRight } from "lucide-react";
 
 export default function Home() {
   return (
@@ -248,119 +248,99 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Project 2: Mentora */}
+          {/* Project 2: Mentora (Bento-style Showcase Card) */}
           <div className="pt-10 border-t border-[var(--border)] space-y-6">
-            <div className="flex items-baseline justify-between flex-wrap gap-2">
-              <h3 className="text-lg sm:text-xl font-medium text-[var(--fg)]">
-                Mentora
-              </h3>
-              <a
-                href="https://github.com/alastrm/Mentora"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-[var(--muted)] hover:text-[var(--fg)] transition-colors inline-flex items-center gap-1"
-              >
-                <span>github.com/alastrm/Mentora</span>
-                <span>&gt;</span>
-              </a>
-            </div>
+            <div className="group relative rounded-3xl overflow-hidden min-h-[420px] border border-black/10 dark:border-white/10 bg-gradient-to-br from-neutral-50 to-white dark:from-neutral-900 dark:to-neutral-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] flex flex-col md:grid md:grid-cols-[5fr_7fr]">
+              
+              {/* Left Column (p-8 md:p-10, flex flex-col justify-between) */}
+              <div className="p-8 md:p-10 flex flex-col justify-between relative z-10 space-y-8 md:space-y-0">
+                <div className="space-y-4">
+                  {/* 44px rounded-xl icon tile */}
+                  <div className="w-11 h-11 rounded-xl bg-black/5 dark:bg-white/10 border border-black/5 dark:border-white/10 flex items-center justify-center text-[var(--fg)]">
+                    <Smartphone className="w-5 h-5" />
+                  </div>
 
-            <p className="text-sm sm:text-base font-light text-[var(--muted)] leading-relaxed">
-              Async backend and mobile platform for automated study aid generation. Ingests educational PDFs and DOCX files, concurrently synthesizes structured summaries, interactive quizzes, and Anki flashcards via an orchestrated LLM pipeline with strict token budgeting.
-            </p>
+                  <div className="space-y-2">
+                    <h3 className="text-2xl font-semibold text-[var(--fg)] tracking-tight">
+                      Mentora
+                    </h3>
+                    <p className="text-sm font-light text-[var(--muted)] leading-relaxed">
+                      Async backend and mobile app that turns PDFs into summaries, quizzes and Anki cards.
+                    </p>
+                  </div>
 
-            <div className="flex flex-wrap items-center gap-2 pt-1 text-xs text-[var(--muted)] font-normal">
-              <span className="px-2.5 py-1 rounded-md border border-[var(--border)] bg-transparent">
-                FastAPI
-              </span>
-              <span className="px-2.5 py-1 rounded-md border border-[var(--border)] bg-transparent">
-                PostgreSQL
-              </span>
-              <span className="px-2.5 py-1 rounded-md border border-[var(--border)] bg-transparent">
-                LLM Orchestration
-              </span>
-              <span className="px-2.5 py-1 rounded-md border border-[var(--border)] bg-transparent">
-                Python 3.10+
-              </span>
-              <span className="px-2.5 py-1 rounded-md border border-[var(--border)] bg-transparent">
-                Docker
-              </span>
-            </div>
+                  {/* Tech chips (same dashed style as hero) */}
+                  <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                    {["FastAPI", "PostgreSQL", "LLM Orchestration", "Python", "Docker"].map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2.5 py-1 text-xs rounded-md border border-dashed border-[var(--border-dashed)] text-[var(--muted)] bg-[var(--chip-bg)] font-normal"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
 
-            {/* Mobile Showcase: 3 Key Screens */}
-            <div className="space-y-3 pt-2">
-              <div className="text-xs font-medium text-[var(--muted)]">
-                Mobile client &amp; core workflow
+                {/* Bottom: pill button "View on GitHub" + arrow icon */}
+                <div className="pt-4 md:pt-0">
+                  <a
+                    href="https://github.com/alastrm/Mentora"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium text-[var(--fg)] bg-black/5 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/15 border border-black/5 dark:border-white/10 transition-colors w-fit group/btn"
+                  >
+                    <span>View on GitHub</span>
+                    <ArrowUpRight className="w-4 h-4 text-[var(--muted)] group-hover/btn:text-[var(--fg)] transition-colors" />
+                  </a>
+                </div>
               </div>
-              <div className="p-5 sm:p-8 rounded-xl border border-[var(--border)] bg-[var(--terminal-bg)]/40">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 items-start">
-                  {/* Screen 1: Ingestion & Setup */}
-                  <div className="flex flex-col items-center text-center space-y-3">
-                    <div className="relative w-full max-w-[200px] sm:max-w-[215px] drop-shadow-[0_12px_24px_rgba(0,0,0,0.14)] dark:drop-shadow-[0_16px_32px_rgba(0,0,0,0.65)] transition-transform duration-200 hover:-translate-y-1">
-                      <Image
-                        src="/mvp/mentora-ingest.png"
-                        alt="Document Ingestion & Generation Setup"
-                        width={317}
-                        height={642}
-                        className="w-full h-auto object-contain select-none"
-                      />
-                    </div>
-                    <div className="space-y-1">
-                      <div className="text-xs font-medium text-[var(--fg)]">
-                        01. Document Ingestion
-                      </div>
-                      <p className="text-[11px] font-light text-[var(--muted)] leading-tight max-w-[190px]">
-                        PDF/DOCX upload with difficulty selection &amp; chunk segmentation.
-                      </p>
-                    </div>
+
+              {/* Right Column: staggered composition bleeding off the bottom */}
+              <div className="relative min-h-[360px] md:min-h-[440px] overflow-hidden flex items-end">
+                {/* Blurred radial glow in accent lime (#c8e86a at 15-20% opacity) */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[360px] md:w-[420px] h-[360px] md:h-[420px] rounded-full bg-[#c8e86a]/15 dark:bg-[#c8e86a]/20 blur-3xl pointer-events-none" />
+
+                {/* Staggered composition */}
+                <div className="relative w-full h-[360px] md:h-[440px] transition-transform duration-500 ease-out group-hover:-translate-y-1.5">
+                  {/* Left phone: top-10, tilted -rotate-3 */}
+                  <div className="absolute -left-6 sm:left-1 md:-left-6 lg:left-2 top-8 sm:top-10 w-[190px] sm:w-[220px] md:w-[220px] lg:w-[240px] rounded-[28px] ring-1 ring-black/10 dark:ring-white/15 shadow-2xl shadow-black/50 -rotate-3 select-none pointer-events-none">
+                    <Image
+                      src="/mvp/mentora-ingest.png"
+                      alt="Mentora Document Ingestion"
+                      width={317}
+                      height={642}
+                      className="w-full h-auto object-contain rounded-[28px]"
+                    />
                   </div>
 
-                  {/* Screen 2: Interactive Tests & Synthesis */}
-                  <div className="flex flex-col items-center text-center space-y-3">
-                    <div className="relative w-full max-w-[200px] sm:max-w-[215px] drop-shadow-[0_12px_24px_rgba(0,0,0,0.14)] dark:drop-shadow-[0_16px_32px_rgba(0,0,0,0.65)] transition-transform duration-200 hover:-translate-y-1">
-                      <Image
-                        src="/mvp/mentora-quiz.png"
-                        alt="AI Conspectus & Quiz Generation"
-                        width={322}
-                        height={642}
-                        className="w-full h-auto object-contain select-none"
-                      />
-                    </div>
-                    <div className="space-y-1">
-                      <div className="text-xs font-medium text-[var(--fg)]">
-                        02. Quiz &amp; Summary Synthesis
-                      </div>
-                      <p className="text-[11px] font-light text-[var(--muted)] leading-tight max-w-[190px]">
-                        Concurrent generation of interactive multiple-choice tests &amp; notes.
-                      </p>
-                    </div>
+                  {/* Right phone: top-4, tilted rotate-3 */}
+                  <div className="absolute right-[-24px] sm:right-1 md:right-[-24px] lg:right-2 top-2 sm:top-4 w-[190px] sm:w-[220px] md:w-[220px] lg:w-[240px] rounded-[28px] ring-1 ring-black/10 dark:ring-white/15 shadow-2xl shadow-black/50 rotate-3 select-none pointer-events-none">
+                    <Image
+                      src="/mvp/mentora-quota.png"
+                      alt="Mentora Quota Management"
+                      width={317}
+                      height={642}
+                      className="w-full h-auto object-contain rounded-[28px]"
+                    />
                   </div>
 
-                  {/* Screen 3: Quota & Token Accounting */}
-                  <div className="flex flex-col items-center text-center space-y-3">
-                    <div className="relative w-full max-w-[200px] sm:max-w-[215px] drop-shadow-[0_12px_24px_rgba(0,0,0,0.14)] dark:drop-shadow-[0_16px_32px_rgba(0,0,0,0.65)] transition-transform duration-200 hover:-translate-y-1">
-                      <Image
-                        src="/mvp/mentora-quota.png"
-                        alt="Token Quotas & Row-Level Locking"
-                        width={317}
-                        height={642}
-                        className="w-full h-auto object-contain select-none"
-                      />
-                    </div>
-                    <div className="space-y-1">
-                      <div className="text-xs font-medium text-[var(--fg)]">
-                        03. Token Accounting &amp; Quotas
-                      </div>
-                      <p className="text-[11px] font-light text-[var(--muted)] leading-tight max-w-[190px]">
-                        Row-level locking prevention of double-spends and quota overruns.
-                      </p>
-                    </div>
+                  {/* Center phone: top-24, slightly larger, z-10 */}
+                  <div className="absolute left-1/2 -translate-x-1/2 top-20 sm:top-24 w-[205px] sm:w-[235px] md:w-[235px] lg:w-[255px] z-10 rounded-[28px] ring-1 ring-black/10 dark:ring-white/15 shadow-2xl shadow-black/60 select-none pointer-events-none">
+                    <Image
+                      src="/mvp/mentora-quiz.png"
+                      alt="Mentora Interactive Quiz"
+                      width={322}
+                      height={642}
+                      className="w-full h-auto object-contain rounded-[28px]"
+                    />
                   </div>
                 </div>
               </div>
+
             </div>
 
-            {/* Engineering Deep Dives */}
+            {/* Below the card: Engineering Deep Dives (2 columns) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2 text-xs sm:text-sm">
               <div className="space-y-1.5">
                 <h4 className="font-semibold text-[var(--fg)]">

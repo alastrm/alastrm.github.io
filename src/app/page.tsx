@@ -287,26 +287,23 @@ export default function Home() {
               </span>
             </div>
 
-            {/* Mobile Showcase: 3 Key Screens in Sleek Frames */}
+            {/* Mobile Showcase: 3 Key Screens */}
             <div className="space-y-3 pt-2">
               <div className="text-xs font-medium text-[var(--muted)]">
                 Mobile client &amp; core workflow
               </div>
-              <div className="p-4 sm:p-6 rounded-xl border border-[var(--border)] bg-[var(--terminal-bg)]/40">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-5 items-start">
+              <div className="p-5 sm:p-8 rounded-xl border border-[var(--border)] bg-[var(--terminal-bg)]/40">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 items-start">
                   {/* Screen 1: Ingestion & Setup */}
                   <div className="flex flex-col items-center text-center space-y-3">
-                    <div className="relative w-full max-w-[210px] sm:max-w-none rounded-[28px] p-2 bg-[#121316] border border-neutral-700/60 dark:border-neutral-800 shadow-xl transition-transform hover:-translate-y-1 duration-200">
-                      <div className="w-10 h-1 bg-neutral-600/70 rounded-full mx-auto mb-2" />
-                      <div className="relative overflow-hidden rounded-[20px] border border-black/50 aspect-[317/642] bg-neutral-900">
-                        <Image
-                          src="/mvp/screen-2.png"
-                          alt="Document Ingestion & Generation Setup"
-                          fill
-                          sizes="(max-width: 640px) 210px, 240px"
-                          className="object-cover"
-                        />
-                      </div>
+                    <div className="relative w-full max-w-[200px] sm:max-w-[215px] drop-shadow-[0_12px_24px_rgba(0,0,0,0.14)] dark:drop-shadow-[0_16px_32px_rgba(0,0,0,0.65)] transition-transform duration-200 hover:-translate-y-1">
+                      <Image
+                        src="/mvp/mentora-ingest.png"
+                        alt="Document Ingestion & Generation Setup"
+                        width={317}
+                        height={642}
+                        className="w-full h-auto object-contain select-none"
+                      />
                     </div>
                     <div className="space-y-1">
                       <div className="text-xs font-medium text-[var(--fg)]">
@@ -320,17 +317,14 @@ export default function Home() {
 
                   {/* Screen 2: Interactive Tests & Synthesis */}
                   <div className="flex flex-col items-center text-center space-y-3">
-                    <div className="relative w-full max-w-[210px] sm:max-w-none rounded-[28px] p-2 bg-[#121316] border border-neutral-700/60 dark:border-neutral-800 shadow-xl transition-transform hover:-translate-y-1 duration-200">
-                      <div className="w-10 h-1 bg-neutral-600/70 rounded-full mx-auto mb-2" />
-                      <div className="relative overflow-hidden rounded-[20px] border border-black/50 aspect-[317/642] bg-neutral-900">
-                        <Image
-                          src="/mvp/screen-5.png"
-                          alt="AI Conspectus & Quiz Generation"
-                          fill
-                          sizes="(max-width: 640px) 210px, 240px"
-                          className="object-cover"
-                        />
-                      </div>
+                    <div className="relative w-full max-w-[200px] sm:max-w-[215px] drop-shadow-[0_12px_24px_rgba(0,0,0,0.14)] dark:drop-shadow-[0_16px_32px_rgba(0,0,0,0.65)] transition-transform duration-200 hover:-translate-y-1">
+                      <Image
+                        src="/mvp/mentora-quiz.png"
+                        alt="AI Conspectus & Quiz Generation"
+                        width={322}
+                        height={642}
+                        className="w-full h-auto object-contain select-none"
+                      />
                     </div>
                     <div className="space-y-1">
                       <div className="text-xs font-medium text-[var(--fg)]">
@@ -344,17 +338,14 @@ export default function Home() {
 
                   {/* Screen 3: Quota & Token Accounting */}
                   <div className="flex flex-col items-center text-center space-y-3">
-                    <div className="relative w-full max-w-[210px] sm:max-w-none rounded-[28px] p-2 bg-[#121316] border border-neutral-700/60 dark:border-neutral-800 shadow-xl transition-transform hover:-translate-y-1 duration-200">
-                      <div className="w-10 h-1 bg-neutral-600/70 rounded-full mx-auto mb-2" />
-                      <div className="relative overflow-hidden rounded-[20px] border border-black/50 aspect-[317/642] bg-neutral-900">
-                        <Image
-                          src="/mvp/screen-1.png"
-                          alt="Token Quotas & Row-Level Locking"
-                          fill
-                          sizes="(max-width: 640px) 210px, 240px"
-                          className="object-cover"
-                        />
-                      </div>
+                    <div className="relative w-full max-w-[200px] sm:max-w-[215px] drop-shadow-[0_12px_24px_rgba(0,0,0,0.14)] dark:drop-shadow-[0_16px_32px_rgba(0,0,0,0.65)] transition-transform duration-200 hover:-translate-y-1">
+                      <Image
+                        src="/mvp/mentora-quota.png"
+                        alt="Token Quotas & Row-Level Locking"
+                        width={317}
+                        height={642}
+                        className="w-full h-auto object-contain select-none"
+                      />
                     </div>
                     <div className="space-y-1">
                       <div className="text-xs font-medium text-[var(--fg)]">

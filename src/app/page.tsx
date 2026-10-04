@@ -127,7 +127,7 @@ export default function Home() {
 
           {/* Description paragraph */}
           <p className="text-sm sm:text-base font-light leading-relaxed text-[var(--muted)]">
-            I&apos;m a backend developer from Astana, working mostly in Python. I graduated from AITU with honors and won silver at WorldSkills Kazakhstan in IT Solutions for Business.
+            I&apos;m a full-stack developer from Astana, working mostly in Python. I graduated from AITU with honors and won silver at WorldSkills Kazakhstan in IT Solutions for Business.
           </p>
 
           {/* Primary CTA button: View Resume linking directly to attached PDF */}

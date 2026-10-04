@@ -249,7 +249,7 @@ export default function Home() {
           </div>
 
           {/* Project 2: Mentora */}
-          <div className="pt-8 border-t border-[var(--border)] space-y-4">
+          <div className="pt-10 border-t border-[var(--border)] space-y-6">
             <div className="flex items-baseline justify-between flex-wrap gap-2">
               <h3 className="text-lg sm:text-xl font-medium text-[var(--fg)]">
                 Mentora
@@ -266,7 +266,7 @@ export default function Home() {
             </div>
 
             <p className="text-sm sm:text-base font-light text-[var(--muted)] leading-relaxed">
-              Async backend for an educational platform: FastAPI, PostgreSQL, LLM orchestration.
+              Async backend and mobile platform for automated study aid generation. Ingests educational PDFs and DOCX files, concurrently synthesizes structured summaries, interactive quizzes, and Anki flashcards via an orchestrated LLM pipeline with strict token budgeting.
             </p>
 
             <div className="flex flex-wrap items-center gap-2 pt-1 text-xs text-[var(--muted)] font-normal">
@@ -282,6 +282,112 @@ export default function Home() {
               <span className="px-2.5 py-1 rounded-md border border-[var(--border)] bg-transparent">
                 Python 3.10+
               </span>
+              <span className="px-2.5 py-1 rounded-md border border-[var(--border)] bg-transparent">
+                Docker
+              </span>
+            </div>
+
+            {/* Mobile Showcase: 3 Key Screens in Sleek Frames */}
+            <div className="space-y-3 pt-2">
+              <div className="text-xs font-medium text-[var(--muted)]">
+                Mobile client &amp; core workflow
+              </div>
+              <div className="p-4 sm:p-6 rounded-xl border border-[var(--border)] bg-[var(--terminal-bg)]/40">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-5 items-start">
+                  {/* Screen 1: Ingestion & Setup */}
+                  <div className="flex flex-col items-center text-center space-y-3">
+                    <div className="relative w-full max-w-[210px] sm:max-w-none rounded-[28px] p-2 bg-[#121316] border border-neutral-700/60 dark:border-neutral-800 shadow-xl transition-transform hover:-translate-y-1 duration-200">
+                      <div className="w-10 h-1 bg-neutral-600/70 rounded-full mx-auto mb-2" />
+                      <div className="relative overflow-hidden rounded-[20px] border border-black/50 aspect-[317/642] bg-neutral-900">
+                        <Image
+                          src="/mvp/screen-2.png"
+                          alt="Document Ingestion & Generation Setup"
+                          fill
+                          sizes="(max-width: 640px) 210px, 240px"
+                          className="object-cover"
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-1">
+                      <div className="text-xs font-medium text-[var(--fg)]">
+                        01. Document Ingestion
+                      </div>
+                      <p className="text-[11px] font-light text-[var(--muted)] leading-tight max-w-[190px]">
+                        PDF/DOCX upload with difficulty selection &amp; chunk segmentation.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Screen 2: Interactive Tests & Synthesis */}
+                  <div className="flex flex-col items-center text-center space-y-3">
+                    <div className="relative w-full max-w-[210px] sm:max-w-none rounded-[28px] p-2 bg-[#121316] border border-neutral-700/60 dark:border-neutral-800 shadow-xl transition-transform hover:-translate-y-1 duration-200">
+                      <div className="w-10 h-1 bg-neutral-600/70 rounded-full mx-auto mb-2" />
+                      <div className="relative overflow-hidden rounded-[20px] border border-black/50 aspect-[317/642] bg-neutral-900">
+                        <Image
+                          src="/mvp/screen-5.png"
+                          alt="AI Conspectus & Quiz Generation"
+                          fill
+                          sizes="(max-width: 640px) 210px, 240px"
+                          className="object-cover"
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-1">
+                      <div className="text-xs font-medium text-[var(--fg)]">
+                        02. Quiz &amp; Summary Synthesis
+                      </div>
+                      <p className="text-[11px] font-light text-[var(--muted)] leading-tight max-w-[190px]">
+                        Concurrent generation of interactive multiple-choice tests &amp; notes.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Screen 3: Quota & Token Accounting */}
+                  <div className="flex flex-col items-center text-center space-y-3">
+                    <div className="relative w-full max-w-[210px] sm:max-w-none rounded-[28px] p-2 bg-[#121316] border border-neutral-700/60 dark:border-neutral-800 shadow-xl transition-transform hover:-translate-y-1 duration-200">
+                      <div className="w-10 h-1 bg-neutral-600/70 rounded-full mx-auto mb-2" />
+                      <div className="relative overflow-hidden rounded-[20px] border border-black/50 aspect-[317/642] bg-neutral-900">
+                        <Image
+                          src="/mvp/screen-1.png"
+                          alt="Token Quotas & Row-Level Locking"
+                          fill
+                          sizes="(max-width: 640px) 210px, 240px"
+                          className="object-cover"
+                        />
+                      </div>
+                    </div>
+                    <div className="space-y-1">
+                      <div className="text-xs font-medium text-[var(--fg)]">
+                        03. Token Accounting &amp; Quotas
+                      </div>
+                      <p className="text-[11px] font-light text-[var(--muted)] leading-tight max-w-[190px]">
+                        Row-level locking prevention of double-spends and quota overruns.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Engineering Deep Dives */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2 text-xs sm:text-sm">
+              <div className="space-y-1.5">
+                <h4 className="font-semibold text-[var(--fg)]">
+                  Parallel LLM pipeline architecture
+                </h4>
+                <p className="font-light text-[var(--muted)] leading-relaxed">
+                  To eliminate long waiting times when processing multi-chapter textbooks, the ingestion service segments documents into semantic windows and runs parallel asynchronous LLM completions via <code className="font-mono text-[11px] px-1 py-0.5 rounded bg-[var(--border)]/50">asyncio</code>. Conspectus generation, question authoring, and flashcards are orchestrated concurrently with fallback handling.
+                </p>
+              </div>
+
+              <div className="space-y-1.5">
+                <h4 className="font-semibold text-[var(--fg)]">
+                  Quota concurrency &amp; token accounting
+                </h4>
+                <p className="font-light text-[var(--muted)] leading-relaxed">
+                  Handling high-concurrency student usage without race conditions required strict transactional integrity. By applying PostgreSQL row-level locks (<code className="font-mono text-[11px] px-1 py-0.5 rounded bg-[var(--border)]/50">SELECT ... FOR UPDATE</code>) on user balance records, token allocations and monthly generation quotas are decremented atomically, eliminating duplicate burns.
+                </p>
+              </div>
             </div>
           </div>
         </section>

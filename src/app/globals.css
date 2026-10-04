@@ -1,37 +1,47 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  /* Light "Paper" Theme (Default) */
-  --bg: #f5f4ef;
-  --fg: #18181b;
-  --muted: #52525b; /* Zinc-600: Contrast 7.08:1 on #f5f4ef (Passes WCAG AAA) */
-  --border: rgba(24, 24, 27, 0.12);
-  --accent: #991b1b; /* Oxblood / Red-800: Contrast 7.55:1 on #f5f4ef (Passes WCAG AAA) */
-  --accent-soft: rgba(153, 27, 27, 0.08);
-  --terminal-bg: #eceae1;
-  --terminal-fg: #18181b;
-  --state-active: #15803d; /* Green-700: Contrast 5.10:1 on #f5f4ef */
-  --state-warn: #b45309;   /* Amber-700: Contrast 5.25:1 on #f5f4ef */
-  --todo-bg: #fef08a;      /* Draft highlighter yellow */
-  --todo-fg: #713f12;      /* High contrast dark amber (CR 8.4:1) */
+  /* Light Theme (Default: Pure White) */
+  --bg: #ffffff;
+  --fg: #171717;
+  --muted: #737373;
+  --subtle: #a3a3a3;
+  --border: rgba(0, 0, 0, 0.06);
+  --border-dashed: rgba(0, 0, 0, 0.12);
+  --chip-bg: #f5f5f5;
+  --chip-fg: #171717;
+  --header-bg: rgba(255, 255, 255, 0.85);
+  --btn-bg: #171717;
+  --btn-fg: #ffffff;
+  --card-bg: transparent;
+  --terminal-bg: rgba(0, 0, 0, 0.015);
+  --terminal-fg: #171717;
+  --state-active: #16a34a;
+  --state-warn: #d97706;
+  --accent: #991b1b;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Dark "Deep Carbon" Theme */
-    --bg: #0e0f11;
-    --fg: #f4f4f5;
-    --muted: #a1a1aa; /* Zinc-400: Contrast 7.43:1 on #0e0f11 (Passes WCAG AAA) */
-    --border: rgba(244, 244, 245, 0.12);
-    --accent: #f87171; /* Red-400: Contrast 6.93:1 on #0e0f11 (Passes WCAG AA >= 4.5:1) */
-    --accent-soft: rgba(248, 113, 113, 0.12);
-    --terminal-bg: #16181b;
-    --terminal-fg: #f4f4f5;
-    --state-active: #4ade80; /* Green-400: Contrast 9.20:1 on #0e0f11 */
-    --state-warn: #fbbf24;   /* Amber-400: Contrast 11.4:1 on #0e0f11 */
-    --todo-bg: #422006;      /* Dark amber draft wash */
-    --todo-fg: #fef08a;      /* Fluorescent yellow draft text (CR 13.8:1) */
-  }
+.dark {
+  /* Dark Theme (Soft Charcoal / Muted Dark Grey) */
+  --bg: #161719;
+  --fg: #f5f5f5;
+  --muted: #a3a3a3;
+  --subtle: #737373;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-dashed: rgba(255, 255, 255, 0.15);
+  --chip-bg: rgba(255, 255, 255, 0.06);
+  --chip-fg: #f5f5f5;
+  --header-bg: rgba(22, 23, 25, 0.85);
+  --btn-bg: #f5f5f5;
+  --btn-fg: #161719;
+  --card-bg: transparent;
+  --terminal-bg: rgba(255, 255, 255, 0.02);
+  --terminal-fg: #f5f5f5;
+  --state-active: #4ade80;
+  --state-warn: #fbbf24;
+  --accent: #f87171;
 }
 
 body {

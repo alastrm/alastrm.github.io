@@ -1,175 +1,211 @@
 import React from "react";
 import Image from "next/image";
 import { ForgeStateMachineSvg } from "@/components/ForgeStateMachineSvg";
-import { GitBranch, Send, Mail, ArrowUpRight } from "lucide-react";
+import { ParticlesBackground } from "@/components/ParticlesBackground";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import {
+  PythonIcon,
+  DockerIcon,
+  SqliteIcon,
+  FastApiIcon,
+} from "@/components/TechIcons";
+import { FaGithub, FaTelegram, FaEnvelope } from "react-icons/fa";
+import { ChevronRight, Terminal } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[var(--bg)] text-[var(--fg)] font-sans antialiased selection:bg-[var(--accent)] selection:text-white">
-      <main className="max-w-6xl mx-auto px-5 sm:px-8 py-10 sm:py-14 lg:py-16">
-        {/* Top Minimal Meta Bar */}
-        <header className="flex items-center justify-between pb-6 mb-10 sm:mb-14 border-b border-[var(--border)] text-xs text-[var(--muted)] font-sans">
-          <div className="font-medium text-[var(--fg)]">Madi Alenov</div>
-          <div>Astana, KZ</div>
-        </header>
+    <div className="min-h-screen bg-[var(--bg)] text-[var(--fg)] font-sans antialiased selection:bg-[var(--fg)] selection:text-[var(--bg)] relative transition-colors duration-200">
+      {/* 1. Interactive Particles Canvas behind all content: fixed, inset 0, z-0, pointer-events-none */}
+      <ParticlesBackground />
 
-        {/* Asymmetrical 2-Column Document Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* ================= LEFT COLUMN (~38%) ================= */}
-          <aside className="lg:col-span-5 space-y-10 lg:space-y-12">
-            {/* Identity & Bio */}
-            <div>
-              <div className="flex items-center gap-4 sm:gap-5">
-                <Image
-                  src="https://avatars.githubusercontent.com/u/134535771?v=4"
-                  alt="Madi Alenov"
-                  width={64}
-                  height={64}
-                  unoptimized
-                  priority
-                  className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-[var(--border)] object-cover shrink-0 select-none"
-                />
-                <div>
-                  <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-[var(--fg)] leading-tight font-sans">
-                    Madi Alenov
-                  </h1>
-                  <div className="text-sm text-[var(--muted)] mt-1 font-sans font-medium">
-                    Backend & Systems
-                  </div>
-                </div>
+      {/* Sticky Header with bottom border spanning FULL window width, wrapped in relative z-10 */}
+      <header className="sticky top-0 z-50 w-full bg-[var(--header-bg)] backdrop-blur-md border-b border-[var(--border)] transition-colors duration-200">
+        <div className="relative z-10 max-w-3xl mx-auto px-6 sm:px-8 h-16 flex items-center justify-between">
+          {/* Left: Bold initials/logo only (no badges, no status pills) */}
+          <a
+            href="#"
+            className="font-bold text-base tracking-tight text-[var(--fg)] hover:opacity-80 transition-opacity"
+          >
+            MA
+          </a>
+
+          {/* Right: Muted nav links, thin vertical divider, plain theme toggle icon */}
+          <div className="flex items-center gap-5 sm:gap-6 text-sm">
+            <nav className="flex items-center gap-5 sm:gap-6 text-[var(--muted)]">
+              <a
+                href="#projects"
+                className="hover:text-[var(--fg)] transition-colors"
+              >
+                Projects
+              </a>
+              <a
+                href="#highlights"
+                className="hover:text-[var(--fg)] transition-colors"
+              >
+                Highlights
+              </a>
+            </nav>
+            <span className="h-4 w-px bg-[var(--border)]" />
+            <ThemeToggle />
+          </div>
+        </div>
+      </header>
+
+      {/* Main Single Centered Container (~max-w-3xl) in relative z-10 */}
+      <main className="relative z-10 max-w-3xl mx-auto px-6 sm:px-8 py-12 sm:py-16 space-y-16 sm:space-y-24">
+        {/* ================= HERO SECTION ================= */}
+        <section className="space-y-8">
+          {/* Avatar + Name + Icon-only Social Links */}
+          <div className="flex items-center gap-6 sm:gap-8">
+            <Image
+              src="https://avatars.githubusercontent.com/u/134535771?v=4"
+              alt="Madi Alenov"
+              width={144}
+              height={144}
+              unoptimized
+              priority
+              className="w-28 h-28 sm:w-36 sm:h-36 rounded-full ring-1 ring-black/10 dark:ring-white/10 border border-[var(--border)] object-cover select-none shrink-0"
+            />
+
+            <div className="space-y-2.5">
+              <div className="flex items-center gap-2">
+                <h1 className="text-2xl sm:text-3xl font-semibold text-[var(--fg)] tracking-tight">
+                  Madi Alenov
+                </h1>
+                {/* Blue verified badge */}
+                <svg
+                  className="w-5 h-5 text-[#00a8ff] fill-current shrink-0"
+                  viewBox="0 0 24 24"
+                  aria-label="Verified developer"
+                >
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                </svg>
               </div>
 
-              {/* Bio (Exact user text, no TODO blocks) */}
-              <div className="mt-5 text-sm leading-relaxed text-[var(--fg)] font-sans">
-                <p>
-                  I&apos;m a backend developer from Astana, working mostly in Python. I graduated from AITU with honors and won silver at WorldSkills Kazakhstan in IT Solutions for Business.
-                </p>
-              </div>
-
-              {/* Contacts (Oxblood accent links) */}
-              <div className="mt-6 flex flex-wrap items-center gap-4 text-xs font-sans">
+              {/* Icon-only social links (filled variants, 24-26px, slate-600, hover slate-900) */}
+              <div className="flex items-center gap-3.5 pt-0.5">
                 <a
                   href="https://github.com/alastrm"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-[var(--accent)] hover:underline"
+                  aria-label="GitHub profile"
+                  className="text-slate-600 hover:text-slate-900 dark:text-neutral-400 dark:hover:text-white transition-colors"
                 >
-                  <GitBranch className="w-3.5 h-3.5" strokeWidth={1.5} />
-                  <span>github/alastrm</span>
+                  <FaGithub size={24} />
                 </a>
-
                 <a
                   href="https://t.me/hsokidam"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-[var(--accent)] hover:underline"
+                  aria-label="Telegram"
+                  className="text-slate-600 hover:text-slate-900 dark:text-neutral-400 dark:hover:text-white transition-colors"
                 >
-                  <Send className="w-3.5 h-3.5" strokeWidth={1.5} />
-                  <span>@hsokidam</span>
+                  <FaTelegram size={24} />
                 </a>
-
                 <a
                   href="mailto:alenovm1@gmail.com"
-                  className="inline-flex items-center gap-1.5 text-[var(--accent)] hover:underline"
+                  aria-label="Email"
+                  className="text-slate-600 hover:text-slate-900 dark:text-neutral-400 dark:hover:text-white transition-colors"
                 >
-                  <Mail className="w-3.5 h-3.5" strokeWidth={1.5} />
-                  <span>alenovm1@gmail.com</span>
+                  <FaEnvelope size={24} />
                 </a>
               </div>
             </div>
+          </div>
 
-            {/* Sekiro Quote — The largest, most breathable element (Oxblood quote marks and dash, pure air) */}
-            <div className="py-6 sm:py-8 space-y-3">
-              <blockquote className="text-3xl sm:text-4xl font-medium tracking-tight text-[var(--fg)] leading-snug font-sans">
-                <span className="text-[var(--accent)] select-none">«</span>Hesitation — is defeat.<span className="text-[var(--accent)] select-none">»</span>
-              </blockquote>
-              <cite className="block text-xs font-sans text-[var(--muted)] not-italic">
-                <span className="text-[var(--accent)] mr-1.5 select-none">—</span>Isshin Ashina, Sekiro: Shadows Die Twice
-              </cite>
-            </div>
+          {/* Headline on ONE line: semibold role + font-light muted stack */}
+          <div>
+            <h2 className="text-2xl sm:text-3xl lg:text-[32px] tracking-tight leading-snug">
+              <span className="font-semibold text-[var(--fg)]">
+                Backend &amp; Systems Developer
+              </span>
+              <span className="font-light text-[var(--muted)]">
+                {" "}— Python &amp; Linux
+              </span>
+            </h2>
+          </div>
 
-            {/* Tools & Environment — Verified tools, Go & asyncio removed */}
-            <div className="pt-8 border-t border-[var(--border)] text-xs font-sans space-y-3">
-              <h2 className="text-xs font-semibold text-[var(--fg)]">
-                Tools & environment
-              </h2>
+          {/* Description paragraph */}
+          <p className="text-sm sm:text-base font-light leading-relaxed text-[var(--muted)]">
+            I&apos;m a backend developer from Astana, working mostly in Python. I graduated from AITU with honors and won silver at WorldSkills Kazakhstan in IT Solutions for Business.
+          </p>
 
-              <dl className="space-y-2 text-[var(--muted)] leading-relaxed">
-                <div>
-                  <dt className="text-[var(--fg)] inline font-medium">Languages: </dt>
-                  <dd className="inline">Python, TypeScript, Java</dd>
-                </div>
-                <div>
-                  <dt className="text-[var(--fg)] inline font-medium">Infrastructure: </dt>
-                  <dd className="inline">Docker Engine API, Traefik</dd>
-                </div>
-                <div>
-                  <dt className="text-[var(--fg)] inline font-medium">Data & State: </dt>
-                  <dd className="inline">PostgreSQL, SQLite (WAL mode), Redis, Django ORM, Migrations</dd>
-                </div>
-                <div>
-                  <dt className="text-[var(--fg)] inline font-medium">Frameworks & Runtimes: </dt>
-                  <dd className="inline">FastAPI, Django, Spring</dd>
-                </div>
-              </dl>
-            </div>
-          </aside>
+          {/* Primary CTA button: View Resume linking directly to attached PDF */}
+          <div className="pt-2">
+            <a
+              href="/Madi_Alenov_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--btn-bg)] text-[var(--btn-fg)] text-sm font-medium hover:opacity-90 transition-opacity"
+            >
+              <span>View Resume</span>
+              <ChevronRight className="w-4 h-4" />
+            </a>
+          </div>
+        </section>
 
-          {/* ================= RIGHT COLUMN (~62%) — DOMINANT BLOCK ================= */}
-          <section className="lg:col-span-7 space-y-8">
-            {/* Project Header */}
-            <div>
-              <div className="text-xs font-sans text-[var(--muted)] mb-1 font-medium">
-                Project
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-[var(--fg)] font-sans">
+        {/* ================= PROJECTS SECTION ================= */}
+        <section id="projects" className="space-y-8 sm:space-y-10">
+          <div className="flex items-baseline justify-between">
+            <h2 className="text-2xl sm:text-3xl font-light tracking-tight text-[var(--fg)]">
+              Projects
+            </h2>
+            <a
+              href="https://github.com/alastrm/Forge"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs sm:text-sm font-normal text-[var(--muted)] hover:text-[var(--fg)] transition-colors inline-flex items-center gap-1"
+            >
+              <span>View Details</span>
+              <span>&gt;</span>
+            </a>
+          </div>
+
+          <div className="space-y-6">
+            <div className="flex items-baseline justify-between flex-wrap gap-2">
+              <h3 className="text-lg sm:text-xl font-medium text-[var(--fg)]">
                 Forge Orchestrator
-              </h2>
-              <p className="mt-3 text-sm text-[var(--fg)] leading-relaxed font-sans">
-                A container orchestrator for a single server, written with only Python&apos;s standard library. It does blue/green deploys through Traefik with no downtime.
-              </p>
-            </div>
-
-            {/* Motivation Section (Exact user text) */}
-            <div className="pt-8 border-t border-[var(--border)] space-y-3">
-              <h3 className="text-xs font-sans text-[var(--fg)] font-semibold">
-                Why Forge was built
               </h3>
-              <p className="text-sm leading-relaxed text-[var(--fg)] font-sans">
-                Most deployment tools want Redis, Celery or a whole cluster just to restart a container on one server. I wanted to see how far I could get with only Python&apos;s standard library, OS threads and SQLite in WAL mode, and still do zero-downtime blue/green deploys.
-              </p>
+              <a
+                href="https://github.com/alastrm/Forge"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-[var(--muted)] hover:text-[var(--fg)] transition-colors inline-flex items-center gap-1"
+              >
+                <span>github.com/alastrm/Forge</span>
+                <span>&gt;</span>
+              </a>
             </div>
 
-            {/* Finite State Machine Architecture Diagram (Clean, no card box) */}
-            <div className="pt-8 border-t border-[var(--border)] space-y-3">
-              <h3 className="text-xs font-sans text-[var(--fg)] font-semibold">
+            <p className="text-sm sm:text-base font-light text-[var(--muted)] leading-relaxed">
+              A container orchestrator for a single server, written with only Python&apos;s standard library. It does blue/green deploys through Traefik with no downtime.
+            </p>
+
+            {/* Finite state machine architecture */}
+            <div className="space-y-2 pt-2">
+              <div className="text-xs font-medium text-[var(--muted)]">
                 Finite state machine architecture
-              </h3>
-
-              <div className="py-2">
+              </div>
+              <div className="p-3 rounded-lg border border-[var(--border)] bg-transparent">
                 <ForgeStateMachineSvg />
               </div>
-              <p className="text-[11px] font-sans text-[var(--muted)] leading-relaxed">
-                Deployment lifecycle coordinates container builds, in-namespace health checks, Traefik weighted traffic shifts, and automatic rollback without dropping in-flight sockets.
-              </p>
             </div>
 
-            {/* Terminal / CLI Execution */}
-            <div className="pt-8 border-t border-[var(--border)] space-y-3">
-              <div className="flex items-center justify-between text-xs font-sans">
-                <h3 className="text-[var(--fg)] font-semibold">
-                  Terminal execution
-                </h3>
-                <span className="text-[var(--muted)] text-[11px] font-mono">forge-cli</span>
+            {/* Terminal execution block */}
+            <div className="space-y-2 pt-2">
+              <div className="text-xs font-medium text-[var(--muted)]">
+                Terminal execution
               </div>
-
-              <div className="bg-[var(--terminal-bg)] p-4 sm:p-5 font-mono text-xs text-[var(--terminal-fg)] leading-relaxed overflow-x-auto">
-                <div className="text-[11px] text-[var(--muted)] pb-2 mb-3 border-b border-[var(--border)] flex justify-between items-center select-none font-mono">
-                  <span>bash</span>
-                  <span>forge deploy</span>
+              <div className="bg-[var(--terminal-bg)] border border-[var(--border)] rounded-lg p-4 sm:p-5 font-mono text-xs text-[var(--terminal-fg)] leading-relaxed overflow-x-auto">
+                <div className="text-[11px] text-[var(--muted)] pb-2 mb-3 border-b border-[var(--border)] flex justify-between items-center select-none font-sans">
+                  <span className="flex items-center gap-1.5">
+                    <Terminal className="w-3 h-3" />
+                    <span>bash</span>
+                  </span>
+                  <span>$ forge deploy</span>
                 </div>
 
-                <div className="font-mono text-xs leading-relaxed space-y-1 text-[var(--terminal-fg)]">
+                <div className="space-y-1">
                   <div>
                     <span className="text-[var(--muted)] select-none">$ </span>
                     <span className="font-medium text-[var(--fg)]">forge deploy</span>
@@ -189,37 +225,107 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Hardest Challenge (Exact user text) */}
-            <div className="pt-8 border-t border-[var(--border)] space-y-3">
-              <h3 className="text-xs font-sans text-[var(--fg)] font-semibold">
-                The hardest engineering challenge
-              </h3>
-              <p className="text-sm leading-relaxed text-[var(--fg)] font-sans">
-                The hardest bug was intermittent HTTP 502s during a switch. Traefik picks up config changes through inotify with about 100 ms of debounce, and Forge was sending SIGTERM to the old container before Traefik had actually stopped routing to it. I fixed it by separating routing from shutdown: Forge first verifies that the new route is live, then gives the old container a 2-second draining window. I tested it with 235k+ requests and saw no dropped connections.
-              </p>
+            {/* Engineering Deep Dives */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4 text-xs sm:text-sm">
+              <div className="space-y-1.5">
+                <h4 className="font-semibold text-[var(--fg)]">
+                  Why Forge was built
+                </h4>
+                <p className="font-light text-[var(--muted)] leading-relaxed">
+                  Most deployment tools want Redis, Celery or a whole cluster just to restart a container on one server. I wanted to see how far I could get with only Python&apos;s standard library, OS threads and SQLite in WAL mode, and still do zero-downtime blue/green deploys.
+                </p>
+              </div>
+
+              <div className="space-y-1.5">
+                <h4 className="font-semibold text-[var(--fg)]">
+                  The hardest engineering challenge
+                </h4>
+                <p className="font-light text-[var(--muted)] leading-relaxed">
+                  The hardest bug was intermittent HTTP 502s during a switch. Traefik picks up config changes through inotify with about 100 ms of debounce. I fixed it by separating routing from shutdown with a 2-second draining window, tested with 235k+ requests without dropped connections.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= HIGHLIGHTS / STACK SECTION ================= */}
+        <section id="highlights" className="space-y-8 sm:space-y-10">
+          <div className="flex items-baseline justify-between">
+            <h2 className="text-2xl sm:text-3xl font-light tracking-tight text-[var(--fg)]">
+              Highlights
+            </h2>
+            <a
+              href="https://github.com/alastrm"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs sm:text-sm font-normal text-[var(--muted)] hover:text-[var(--fg)] transition-colors inline-flex items-center gap-1"
+            >
+              <span>View Details</span>
+              <span>&gt;</span>
+            </a>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-xs sm:text-sm">
+            <div className="space-y-1.5">
+              <div className="font-semibold text-[var(--fg)] flex items-center gap-2">
+                <PythonIcon className="w-4 h-4" />
+                <span>Languages</span>
+              </div>
+              <div className="font-light text-[var(--muted)] leading-relaxed">
+                Python (asyncio, multiprocessing, threading), TypeScript, Java
+              </div>
             </div>
 
-            {/* Repository & Source Code Link (Red accent used strictly for link) */}
-            <div className="pt-8 border-t border-[var(--border)] flex items-center justify-between text-xs font-sans">
-              <span className="text-[var(--muted)]">Source code & documentation</span>
-              <a
-                href="https://github.com/alastrm/Forge"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 font-medium text-[var(--accent)] hover:underline"
-              >
-                <span>github.com/alastrm/Forge</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </a>
+            <div className="space-y-1.5">
+              <div className="font-semibold text-[var(--fg)] flex items-center gap-2">
+                <DockerIcon className="w-4 h-4" />
+                <span>Infrastructure &amp; Systems</span>
+              </div>
+              <div className="font-light text-[var(--muted)] leading-relaxed">
+                Docker Engine API, Traefik (inotify routing), Linux, Systemd, Bash
+              </div>
             </div>
-          </section>
-        </div>
 
-        {/* Minimal Footer */}
-        <footer className="mt-16 sm:mt-20 pt-6 border-t border-[var(--border)] text-xs font-sans text-[var(--muted)]">
-          <div>© 2026 Madi Alenov</div>
-        </footer>
+            <div className="space-y-1.5">
+              <div className="font-semibold text-[var(--fg)] flex items-center gap-2">
+                <SqliteIcon className="w-4 h-4" />
+                <span>Data &amp; State</span>
+              </div>
+              <div className="font-light text-[var(--muted)] leading-relaxed">
+                SQLite (WAL mode concurrency), PostgreSQL, Redis, Django ORM
+              </div>
+            </div>
+
+            <div className="space-y-1.5">
+              <div className="font-semibold text-[var(--fg)] flex items-center gap-2">
+                <FastApiIcon className="w-4 h-4" />
+                <span>Frameworks</span>
+              </div>
+              <div className="font-light text-[var(--muted)] leading-relaxed">
+                FastAPI, Django, Next.js, Spring Boot
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ================= PERSONAL QUOTE (Sekiro) ================= */}
+        <section className="py-6 border-t border-[var(--border)] space-y-2">
+          <blockquote className="text-xl sm:text-2xl font-light tracking-tight text-[var(--fg)] leading-snug">
+            <span className="text-[var(--accent)] select-none">«</span>Hesitation — is defeat.<span className="text-[var(--accent)] select-none">»</span>
+          </blockquote>
+          <cite className="block text-xs font-normal text-[var(--muted)] not-italic">
+            <span className="text-[var(--accent)] mr-1.5 select-none">—</span>Isshin Ashina, Sekiro: Shadows Die Twice
+          </cite>
+        </section>
       </main>
+
+      {/* Full-width Minimalist Footer wrapped in relative z-10 */}
+      <footer className="relative z-10 w-full border-t border-[var(--border)] py-8 transition-colors duration-200">
+        <div className="max-w-3xl mx-auto px-6 sm:px-8 flex items-center justify-between text-xs text-[var(--muted)] font-normal">
+          <div>© 2026 Madi Alenov</div>
+          <div>Astana, KZ</div>
+        </div>
+      </footer>
     </div>
   );
 }

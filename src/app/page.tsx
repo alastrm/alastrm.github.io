@@ -39,10 +39,10 @@ export default function Home() {
                 Projects
               </a>
               <a
-                href="#highlights"
+                href="#stack"
                 className="hover:text-[var(--fg)] transition-colors"
               >
-                Highlights
+                Stack
               </a>
             </nav>
             <span className="h-4 w-px bg-[var(--border)]" />
@@ -113,14 +113,14 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Headline on ONE line: semibold role + font-light muted stack */}
+          {/* Headline: Full-stack Developer — Python, TypeScript. */}
           <div>
             <h2 className="text-2xl sm:text-3xl lg:text-[32px] tracking-tight leading-snug">
               <span className="font-semibold text-[var(--fg)]">
-                Backend &amp; Systems Developer
+                Full-stack Developer
               </span>
               <span className="font-light text-[var(--muted)]">
-                {" "}— Python &amp; Linux
+                {" "}— Python, TypeScript.
               </span>
             </h2>
           </div>
@@ -145,26 +145,27 @@ export default function Home() {
         </section>
 
         {/* ================= PROJECTS SECTION ================= */}
-        <section id="projects" className="space-y-8 sm:space-y-10">
+        <section id="projects" className="space-y-10 sm:space-y-12">
           <div className="flex items-baseline justify-between">
             <h2 className="text-2xl sm:text-3xl font-light tracking-tight text-[var(--fg)]">
               Projects
             </h2>
             <a
-              href="https://github.com/alastrm/Forge"
+              href="https://github.com/alastrm"
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs sm:text-sm font-normal text-[var(--muted)] hover:text-[var(--fg)] transition-colors inline-flex items-center gap-1"
             >
-              <span>View Details</span>
+              <span>All repositories</span>
               <span>&gt;</span>
             </a>
           </div>
 
+          {/* Project 1: Forge */}
           <div className="space-y-6">
             <div className="flex items-baseline justify-between flex-wrap gap-2">
               <h3 className="text-lg sm:text-xl font-medium text-[var(--fg)]">
-                Forge Orchestrator
+                Forge
               </h3>
               <a
                 href="https://github.com/alastrm/Forge"
@@ -178,7 +179,7 @@ export default function Home() {
             </div>
 
             <p className="text-sm sm:text-base font-light text-[var(--muted)] leading-relaxed">
-              A container orchestrator for a single server, written with only Python&apos;s standard library. It does blue/green deploys through Traefik with no downtime.
+              A container orchestrator for a single server, written with only Python&apos;s standard library. Blue/green deploys through Traefik with no downtime, tested with 235k+ requests without dropped connections.
             </p>
 
             {/* Finite state machine architecture */}
@@ -246,13 +247,50 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          {/* Project 2: Mentora */}
+          <div className="pt-8 border-t border-[var(--border)] space-y-4">
+            <div className="flex items-baseline justify-between flex-wrap gap-2">
+              <h3 className="text-lg sm:text-xl font-medium text-[var(--fg)]">
+                Mentora
+              </h3>
+              <a
+                href="https://github.com/alastrm/Mentora"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-[var(--muted)] hover:text-[var(--fg)] transition-colors inline-flex items-center gap-1"
+              >
+                <span>github.com/alastrm/Mentora</span>
+                <span>&gt;</span>
+              </a>
+            </div>
+
+            <p className="text-sm sm:text-base font-light text-[var(--muted)] leading-relaxed">
+              Async backend for an educational platform: FastAPI, PostgreSQL, LLM orchestration.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-2 pt-1 text-xs text-[var(--muted)] font-normal">
+              <span className="px-2.5 py-1 rounded-md border border-[var(--border)] bg-transparent">
+                FastAPI
+              </span>
+              <span className="px-2.5 py-1 rounded-md border border-[var(--border)] bg-transparent">
+                PostgreSQL
+              </span>
+              <span className="px-2.5 py-1 rounded-md border border-[var(--border)] bg-transparent">
+                LLM Orchestration
+              </span>
+              <span className="px-2.5 py-1 rounded-md border border-[var(--border)] bg-transparent">
+                Python 3.10+
+              </span>
+            </div>
+          </div>
         </section>
 
-        {/* ================= HIGHLIGHTS / STACK SECTION ================= */}
-        <section id="highlights" className="space-y-8 sm:space-y-10">
+        {/* ================= STACK SECTION ================= */}
+        <section id="stack" className="space-y-8 sm:space-y-10">
           <div className="flex items-baseline justify-between">
             <h2 className="text-2xl sm:text-3xl font-light tracking-tight text-[var(--fg)]">
-              Highlights
+              Stack
             </h2>
             <a
               href="https://github.com/alastrm"
@@ -260,7 +298,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="text-xs sm:text-sm font-normal text-[var(--muted)] hover:text-[var(--fg)] transition-colors inline-flex items-center gap-1"
             >
-              <span>View Details</span>
+              <span>View Profile</span>
               <span>&gt;</span>
             </a>
           </div>
@@ -282,7 +320,7 @@ export default function Home() {
                 <span>Infrastructure &amp; Systems</span>
               </div>
               <div className="font-light text-[var(--muted)] leading-relaxed">
-                Docker Engine API, Traefik (inotify routing), Linux, Systemd, Bash
+                Docker Engine API, Traefik, Systemd
               </div>
             </div>
 
@@ -292,7 +330,7 @@ export default function Home() {
                 <span>Data &amp; State</span>
               </div>
               <div className="font-light text-[var(--muted)] leading-relaxed">
-                SQLite (WAL mode concurrency), PostgreSQL, Redis, Django ORM
+                SQLite (WAL mode), PostgreSQL, Redis, Django ORM
               </div>
             </div>
 

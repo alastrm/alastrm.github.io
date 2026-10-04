@@ -18,9 +18,9 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Madi Alenov — Backend & Systems",
+  title: "Madi Alenov — Full-stack Developer",
   description:
-    "Personal engineering portfolio of Madi Alenov. Focused on backend services, container orchestration, deterministic state machines, and system architecture.",
+    "Personal engineering portfolio of Madi Alenov, Full-stack Developer specializing in Python and TypeScript. Backend systems, container orchestration, and web applications.",
 };
 
 export default function RootLayout({

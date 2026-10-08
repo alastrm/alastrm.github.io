@@ -32,9 +32,11 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${plexSans.variable} ${plexMono.variable}`}
+      className={`dark ${plexSans.variable} ${plexMono.variable}`}
     >
       <head>
+        <meta name="darkreader-lock" />
+        <meta name="color-scheme" content="dark light" />
         <Script
           id="theme-init"
           strategy="beforeInteractive"
@@ -43,12 +45,12 @@ export default function RootLayout({
               (function() {
                 try {
                   var saved = localStorage.getItem('theme');
-                  if (saved === 'dark') {
-                    document.documentElement.classList.add('dark');
-                    document.documentElement.classList.remove('light');
-                  } else {
+                  if (saved === 'light') {
                     document.documentElement.classList.add('light');
                     document.documentElement.classList.remove('dark');
+                  } else {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.classList.remove('light');
                   }
                 } catch (e) {}
               })();

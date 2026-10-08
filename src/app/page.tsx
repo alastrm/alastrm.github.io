@@ -248,7 +248,80 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Project 2: Mentora (Bento-style Showcase Card) */}
+          {/* Project 2: Sealed */}
+          <div className="pt-10 border-t border-[var(--border)] space-y-6">
+            <div className="flex items-baseline justify-between flex-wrap gap-2">
+              <h3 className="text-lg sm:text-xl font-medium text-[var(--fg)]">
+                Sealed
+              </h3>
+              <a
+                href="https://github.com/alastrm/Sealed"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-[var(--muted)] hover:text-[var(--fg)] transition-colors inline-flex items-center gap-1"
+              >
+                <span>github.com/alastrm/Sealed</span>
+                <span>&gt;</span>
+              </a>
+            </div>
+
+            <p className="text-sm sm:text-base font-light text-[var(--muted)] leading-relaxed">
+              Anonymous drop prototype with client-side WebAssembly cryptography and an untrusted backend. The browser encrypts payloads in memory before transmission; the server acts purely as a blind relay storing ciphertexts without plaintext access.
+            </p>
+
+            {/* Tech chips */}
+            <div className="flex flex-wrap items-center gap-1.5">
+              {["FastAPI", "Next.js", "libsodium (WASM)", "X25519", "BLAKE2b", "Argon2id", "TypeScript"].map((tech) => (
+                <span
+                  key={tech}
+                  className="text-xs px-2 py-0.5 rounded-md border border-dashed border-black/20 dark:border-white/20 text-[var(--muted)] font-normal"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            {/* Key Engineering Highlights: 4 crisp, scannable items */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+              <div className="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--terminal-bg)] space-y-1">
+                <div className="text-xs font-mono font-medium text-[var(--fg)]">
+                  Client-side E2EE
+                </div>
+                <p className="text-xs font-light text-[var(--muted)] leading-relaxed">
+                  Libsodium (WASM), ECIES Sealed Box, Zero-Knowledge backend relay.
+                </p>
+              </div>
+
+              <div className="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--terminal-bg)] space-y-1">
+                <div className="text-xs font-mono font-medium text-[var(--fg)]">
+                  BIP-39 Access
+                </div>
+                <p className="text-xs font-light text-[var(--muted)] leading-relaxed">
+                  Single 12-word mnemonic for keypair and token derivation, no UUIDs or user accounts.
+                </p>
+              </div>
+
+              <div className="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--terminal-bg)] space-y-1">
+                <div className="text-xs font-mono font-medium text-[var(--fg)]">
+                  Traffic Analysis Defense
+                </div>
+                <p className="text-xs font-light text-[var(--muted)] leading-relaxed">
+                  Strict 4 KB message padding and discrete file size bucketing up to 10 MB.
+                </p>
+              </div>
+
+              <div className="p-3.5 rounded-xl border border-[var(--border)] bg-[var(--terminal-bg)] space-y-1">
+                <div className="text-xs font-mono font-medium text-[var(--fg)]">
+                  Tamper-Evident Audit
+                </div>
+                <p className="text-xs font-light text-[var(--muted)] leading-relaxed">
+                  Append-only BLAKE2b hash chain verifying database state integrity.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Project 3: Mentora (Bento-style Showcase Card) */}
           <div className="pt-10 border-t border-[var(--border)] space-y-6">
             <div className="group relative rounded-3xl overflow-hidden min-h-[420px] border border-black/10 dark:border-white/10 bg-gradient-to-br from-neutral-50 to-white dark:from-neutral-900 dark:to-neutral-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] flex flex-col md:grid md:grid-cols-[5fr_7fr]">
               {/* Accent radial glow relative to the CARD (right side, ~500px, blur-3xl, radial-gradient, ~12% opacity, no hard edges) */}

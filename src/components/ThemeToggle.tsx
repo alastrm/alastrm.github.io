@@ -15,11 +15,11 @@ function subscribe(callback: () => void) {
 
 function getSnapshot() {
   const saved = localStorage.getItem("theme");
-  return saved === "dark";
+  return saved !== "light";
 }
 
 function getServerSnapshot() {
-  return false;
+  return true;
 }
 
 export function ThemeToggle() {

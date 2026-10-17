@@ -6,7 +6,7 @@ export function ForgeDeployment() {
         viewBox="0 0 600 320"
         role="img"
         aria-labelledby="forge-visual-title forge-visual-description"
-        className="forge-diagram"
+        className="forge-diagram forge-diagram-desktop"
         fill="none"
       >
         <title id="forge-visual-title">Zero-downtime routing with Traefik</title>
@@ -41,6 +41,40 @@ export function ForgeDeployment() {
           <circle cx="444" cy="256" r="3" fill="currentColor" />
           <text x="455" y="260" className="forge-status forge-green-active">Active</text>
           <text x="455" y="260" className="forge-status forge-green-standby">Standby</text>
+        </g>
+      </svg>
+      <svg
+        viewBox="0 0 320 180"
+        role="img"
+        aria-label="Traefik routes incoming traffic between Blue and Green environments; one is active while the other is on standby."
+        className="forge-diagram forge-diagram-mobile"
+        fill="none"
+      >
+        <path d="M29 90H58" className="forge-line" />
+        <path d="M29 90H58" className="forge-incoming" />
+        <path d="M158 90H174Q186 90 186 78V57Q186 45 200 45H212" className="forge-line" />
+        <path d="M158 90H174Q186 90 186 102V121Q186 133 200 133H212" className="forge-line" />
+        <path d="M158 90H174Q186 90 186 78V57Q186 45 200 45H212" className="forge-route forge-route-blue" />
+        <path d="M158 90H174Q186 90 186 102V121Q186 133 200 133H212" className="forge-route forge-route-green" />
+        <circle cx="17" cy="90" r="12" fill="var(--forge-node-surface)" stroke="var(--forge-node-border)" />
+        <path d="M11 90H23M17 84V96" stroke="var(--project-muted)" strokeWidth="1.2" />
+        <text x="17" y="121" textAnchor="middle" className="forge-label">Traffic</text>
+        <rect x="58" y="61" width="100" height="58" rx="10" fill="var(--forge-node-surface)" stroke="var(--forge-node-border)" />
+        <text x="108" y="96" textAnchor="middle" className="forge-node-name">Traefik</text>
+        <text x="108" y="143" textAnchor="middle" className="forge-label">Reverse proxy</text>
+        <g className="forge-environment forge-blue">
+          <rect x="212" y="14" width="98" height="62" rx="10" fill="var(--forge-blue-surface)" stroke="currentColor" strokeOpacity=".5" />
+          <text x="226" y="39" className="forge-node-name">Blue</text>
+          <circle cx="226" cy="59" r="2.5" fill="currentColor" />
+          <text x="235" y="63" className="forge-status forge-blue-active">Active</text>
+          <text x="235" y="63" className="forge-status forge-blue-standby">Standby</text>
+        </g>
+        <g className="forge-environment forge-green">
+          <rect x="212" y="104" width="98" height="62" rx="10" fill="var(--forge-green-surface)" stroke="currentColor" strokeOpacity=".5" />
+          <text x="226" y="129" className="forge-node-name">Green</text>
+          <circle cx="226" cy="149" r="2.5" fill="currentColor" />
+          <text x="235" y="153" className="forge-status forge-green-active">Active</text>
+          <text x="235" y="153" className="forge-status forge-green-standby">Standby</text>
         </g>
       </svg>
       <div className="forge-footnote"><span />One server. Two environments. No downtime.</div>

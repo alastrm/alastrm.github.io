@@ -193,6 +193,7 @@ body {
 .forge-caption { display: flex; align-items: center; justify-content: center; gap: 7px; color: var(--project-subtle); font-size: 10px; letter-spacing: .04em; }
 .forge-caption-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--project-subtle); }
 .forge-diagram { display: block; width: 100%; height: auto; margin: 22px 0 12px; overflow: visible; }
+.forge-diagram-mobile { display: none; }
 .forge-line { stroke: var(--forge-line); stroke-width: 1.2; }
 .forge-label { fill: var(--project-subtle); font-size: 11px; }
 .forge-node-name { fill: var(--project-text); font-size: 15px; font-weight: 500; }
@@ -237,59 +238,52 @@ body {
   .forge-deployment { padding-right: 18px; padding-left: 10px; }
 }
 @media (max-width: 760px) {
-  .projects-section { width: calc(100vw - 32px); --projects-inset: 8px; }
-  .projects-heading { margin-bottom: 24px; }
+  .projects-section { width: calc(100vw - 32px); --projects-inset: 8px; display: grid; grid-template-columns: minmax(0, 1fr) auto; }
+  .projects-heading { grid-column: 1; grid-row: 1; align-self: end; margin: 0 0 18px var(--projects-inset); }
   .projects-heading h2 { font-size: 26px; }
-  .projects-viewport { gap: 12px; }
-  .project-card { display: flex; flex-direction: column-reverse; height: 716px; }
-  .project-copy { flex: 1; padding: 24px 25px; border-top: 1px solid var(--project-line); }
-  .project-category { font-size: 9px; }
-  .project-intro { margin-top: 20px; }
-  .project-intro h3 { font-size: 32px; }
-  .project-tagline { max-width: none; font-size: 17px; margin-top: 7px; }
-  .project-description { max-width: 520px; font-size: 13px; line-height: 1.65; margin-top: 12px; }
-  .project-technologies { max-width: none; margin-top: 15px; margin-bottom: 17px; }
-  .project-github { padding-top: 3px; }
-  .project-visual { flex: 0 0 300px; min-height: 300px; }
-  .product-composition { min-height: 300px; padding: 22px 23px 43px; }
-  .product-window { max-width: 550px; }
-  .product-window-bar { font-size: 6px; height: 22px; }
-  .visual-caption { bottom: 16px; font-size: 9px; }
-  .mentora-composition { min-height: 300px; height: 300px; }
-  .mentora-phone { border-radius: 20px; }
-  .mentora-phone-back { width: 125px; left: 22%; top: 32px; }
-  .mentora-phone-quota { width: 125px; left: 78%; top: 32px; }
-  .mentora-phone-front { width: 145px; top: 12px; }
-  .mentora-composition .visual-caption { display: none; }
-  .forge-deployment { max-width: 510px; padding: 20px; }
-  .forge-diagram { margin: 8px 0; }
-  .forge-node-name { font-size: 23px; }
-  .forge-status { font-size: 20px; }
-  .forge-label { font-size: 18px; }
-  .forge-caption, .forge-footnote { font-size: 9px; }
-  .projects-controls { gap: 8px; }
-  .project-selectors { gap: 15px; }
-  .selector-name { display: none; }
-  .project-selectors button { justify-content: center; width: 16px; min-height: 44px; }
-  .selector-dot { width: 5px; height: 5px; }
-  .project-selectors button.is-active .selector-dot { width: 16px; border-radius: 3px; }
-  .projects-pagination { margin-right: 8px; }
-  .project-arrow { width: 40px; height: 40px; }
-}
-@media (max-width: 420px) {
-  .project-card { height: 704px; }
-  .project-copy { padding: 23px 21px; }
-  .project-visual { flex-basis: 260px; min-height: 260px; }
-  .product-composition { min-height: 260px; padding: 18px 16px 38px; }
-  .product-composition-sealed .product-window { width: 430px; flex-shrink: 0; margin-left: 72px; }
-  .product-composition-sealed .sealed-screenshot { aspect-ratio: 2048 / 960; }
-  .product-composition-sealed .sealed-screenshot img { transform: translateY(-8%); }
-  .mentora-composition { height: 260px; min-height: 260px; }
-  .mentora-phone { border-radius: 17px; }
-  .mentora-phone-back, .mentora-phone-quota { width: 105px; top: 28px; }
-  .mentora-phone-front { width: 125px; top: 7px; }
-  .forge-deployment { padding: 18px 10px; }
-  .forge-diagram { margin: 14px 0 12px; }
+  .projects-eyebrow { margin-bottom: 5px; font-size: 9px; }
+  .projects-all, .project-selectors { display: none; }
+  .projects-controls { grid-column: 2; grid-row: 1; align-self: end; margin: 0 var(--projects-inset) 18px 12px; }
+  .projects-navigation { gap: 6px; }
+  .projects-pagination { gap: 6px; margin-right: 5px; font-size: 10px; }
+  .project-arrow { width: 36px; height: 36px; }
+  .projects-viewport { grid-column: 1 / -1; grid-row: 2; gap: 12px; }
+  .project-slide { display: flex; }
+  .project-card { flex: 1; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto auto auto; gap: 13px; height: auto; padding: 18px; border-radius: 14px; }
+  .project-copy { display: contents; }
+  .project-category { display: none; }
+  .project-intro { grid-row: 1; margin: 0; }
+  .project-intro h3 { font-size: 28px; }
+  .project-tagline { max-width: none; font-size: 15px; line-height: 1.4; margin-top: 5px; }
+  .project-description { grid-row: 3; max-width: none; margin: 0; font-size: 13px; line-height: 1.65; }
+  .project-technologies { grid-row: 4; max-width: none; margin: 0; gap: 5px; }
+  .project-technologies li { padding: 4px 6px; }
+  .project-github { grid-row: 5; margin: 0; min-height: 36px; padding-top: 12px; border-top: 1px solid var(--project-line); }
+  .project-visual { grid-row: 2; min-height: clamp(156px, 47vw, 212px); border-radius: 9px; background: var(--forge-node-surface); }
+  .project-sealed .project-visual, .project-sendrift .project-visual { background: transparent; }
+  .visual-caption { display: none; }
+  .product-composition { position: absolute; inset: 0; min-height: 0; height: 100%; padding: 0; }
+  .product-window { display: flex; flex-direction: column; height: 100%; max-width: none; border-radius: 8px; transform: none; }
+  .product-window-bar { flex: 0 0 18px; gap: 10px; padding: 0 7px; font-size: 6px; }
+  .window-dots { gap: 3px; }
+  .window-dots i { width: 3px; height: 3px; }
+  .sealed-screenshot { flex: 1; min-height: 0; aspect-ratio: auto; }
+  /* Show the report form at a useful scale rather than shrinking the whole desktop. */
+  .sealed-screenshot img { width: 160%; max-width: none; margin-left: -29%; transform: translateY(-16.5%); }
+  .project-sendrift .product-window { height: auto; }
+  .sendrift-screenshot { flex: none; }
+  .mentora-composition { position: absolute; inset: 0; min-height: 0; height: 100%; }
+  .mentora-phone { border-radius: 14px; }
+  .mentora-phone-back { width: min(27%, 90px); left: 22%; top: 50%; transform: translate(-50%, -50%) rotate(-7deg); }
+  .mentora-phone-quota { width: min(27%, 90px); left: 78%; top: 50%; transform: translate(-50%, -50%) rotate(7deg); }
+  .mentora-phone-front { width: min(34%, 110px); top: 50%; transform: translate(-50%, -50%); }
+  .forge-deployment { width: 100%; max-width: none; padding: 0; }
+  .forge-diagram { margin: 0; }
+  .forge-caption, .forge-footnote, .forge-diagram-desktop { display: none; }
+  .forge-diagram-mobile { display: block; max-height: 212px; }
+  .forge-diagram-mobile .forge-node-name { font-size: 17px; }
+  .forge-diagram-mobile .forge-status { font-size: 13px; }
+  .forge-diagram-mobile .forge-label { font-size: 12px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .projects-viewport { scroll-behavior: auto; }

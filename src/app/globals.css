@@ -70,3 +70,230 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Selected projects: a contained, native scroll-snap carousel. */
+.projects-section {
+  width: min(1184px, calc(100vw - 48px));
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  scroll-margin-top: 100px;
+  --projects-inset: 40px;
+  --project-surface: #fafbfc;
+  --project-line: #dfe2e7;
+  --project-text: #20232b;
+  --project-secondary: #454b59;
+  --project-muted: #626977;
+  --project-subtle: #727a87;
+  --project-badge-line: #dce0e6;
+  --project-badge-text: #5c6472;
+  --project-shadow: #18203318;
+  --project-visual-shadow: #18203340;
+  --project-phone-border: #afb5bf;
+  --forge-line: #cbd0d9;
+  --forge-node-surface: #f1f3f6;
+  --forge-node-border: #bdc4cf;
+  --forge-blue: #3569a8;
+  --forge-green: #287454;
+  --forge-blue-surface: #edf3fc;
+  --forge-green-surface: #edf6f1;
+}
+.dark .projects-section {
+  --project-surface: #111214;
+  --project-line: #2a2c31;
+  --project-text: #f0f0f2;
+  --project-secondary: #d0d1d8;
+  --project-muted: #a0a2ac;
+  --project-subtle: #858b98;
+  --project-badge-line: #303238;
+  --project-badge-text: #aaaeb9;
+  --project-shadow: #0009;
+  --project-visual-shadow: #000b;
+  --project-phone-border: #45474a;
+  --forge-line: #343740;
+  --forge-node-surface: #1b1d22;
+  --forge-node-border: #41444d;
+  --forge-blue: #79a7e3;
+  --forge-green: #74b69a;
+  --forge-blue-surface: #151a23;
+  --forge-green-surface: #151e1b;
+}
+.projects-heading { margin: 0 var(--projects-inset) 28px; display: flex; align-items: end; justify-content: space-between; gap: 16px; }
+.projects-eyebrow { display: block; margin-bottom: 8px; color: var(--muted); font-size: 10px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; }
+.projects-heading h2 { font-size: 30px; font-weight: 400; line-height: 1.2; letter-spacing: -.035em; }
+.projects-all { display: inline-flex; align-items: center; gap: 6px; padding-bottom: 3px; color: var(--muted); font-size: 12px; transition: color 180ms; }
+.projects-all:hover { color: var(--fg); }
+.projects-viewport {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  padding: 1px var(--projects-inset) 12px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 16px;
+}
+.projects-viewport::-webkit-scrollbar { display: none; }
+.projects-viewport:focus-visible { outline-color: #8d94a6; outline-offset: 5px; }
+.projects-viewport.is-dragging { cursor: grabbing; user-select: none; }
+.project-slide { flex: 0 0 100%; min-width: 0; scroll-snap-align: center; opacity: .4; transition: opacity 380ms ease; }
+.project-slide.is-active { opacity: 1; }
+.project-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr);
+  height: 488px;
+  overflow: hidden;
+  border: 1px solid var(--project-line);
+  border-radius: 16px;
+  background: var(--project-surface);
+  color: var(--project-text);
+  box-shadow: 0 12px 32px -24px var(--project-shadow);
+}
+.project-copy { display: flex; flex-direction: column; align-items: start; min-height: 0; padding: 32px 12px 29px 35px; }
+.project-category { display: flex; align-items: center; gap: 12px; color: var(--project-muted); font-size: 10px; letter-spacing: .055em; }
+.project-number { font-family: var(--font-mono), monospace; font-size: 10px; color: var(--project-subtle); border-right: 1px solid var(--project-line); padding-right: 12px; }
+.project-intro { margin-top: 28px; }
+.project-intro h3 { margin: 0; font-size: 38px; font-weight: 500; letter-spacing: -.055em; line-height: 1.1; }
+.project-tagline { max-width: 280px; margin-top: 11px; color: var(--project-secondary); font-size: 18px; font-weight: 400; line-height: 1.4; letter-spacing: -.025em; }
+.project-description { max-width: 310px; margin-top: 17px; color: var(--project-muted); font-size: 13px; line-height: 1.75; }
+.project-technologies { display: flex; flex-wrap: wrap; gap: 6px; max-width: 310px; margin: 19px 0 25px; padding: 0; list-style: none; }
+.project-technologies li { padding: 4px 7px; border: 1px solid var(--project-badge-line); border-radius: 5px; color: var(--project-badge-text); font-size: 10px; line-height: 1.2; }
+.project-github { display: inline-flex; align-items: center; gap: 9px; min-height: 32px; margin-top: auto; color: var(--project-secondary); font-size: 12px; transition: color 180ms; }
+.project-github svg:last-child { margin-left: 9px; color: var(--project-subtle); transition: transform 180ms, color 180ms; }
+.project-github:hover { color: var(--project-text); }
+.project-github:hover svg:last-child { transform: translate(2px, -2px); color: var(--project-text); }
+.project-visual { min-width: 0; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.visual-caption { position: absolute; bottom: 26px; left: 0; right: 0; color: var(--project-subtle); font-size: 10px; text-align: center; letter-spacing: .025em; }
+.product-composition { position: relative; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; min-height: 0; padding: 46px 28px 54px 22px; }
+.product-window { width: 100%; overflow: hidden; border: 1px solid #3b3d47; border-radius: 9px; background: #18191d; box-shadow: 0 25px 45px -24px var(--project-visual-shadow); transform: perspective(1200px) rotateY(-4deg) rotateX(2deg); }
+.product-window-bar { display: flex; align-items: center; gap: 15px; height: 27px; padding: 0 10px; color: #9a9da8; font-size: 7px; border-bottom: 1px solid #303137; background: #202126; white-space: nowrap; }
+.window-dots { display: flex; gap: 4px; }
+.window-dots i { height: 4px; width: 4px; background: #565962; border-radius: 50%; }
+.window-secure { margin-left: auto; color: #747985; font-size: 6px; }
+.sealed-screenshot { position: relative; aspect-ratio: 2048 / 1120; overflow: hidden; }
+.sealed-screenshot img { display: block; width: 100%; height: auto; transform: translateY(-8%); }
+.sendrift-screenshot { position: relative; aspect-ratio: 1120 / 510; overflow: hidden; background: #edf3fa; }
+/* Frame the existing product capture, trimming only its empty outer canvas. */
+.sendrift-screenshot img { display: block; width: 128.5714%; max-width: none; height: auto; margin-left: -14.2857%; margin-top: -20.1786%; }
+.product-composition-sendrift { padding-left: 28px; padding-right: 34px; }
+.product-composition-sendrift .product-window { border-color: #58657a; }
+.product-composition-sendrift .product-window-bar { background: #e3eaf5; border-bottom-color: #d1dceb; color: #62728a; }
+.product-composition-sendrift .window-dots i { background: #adbbce; }
+.product-composition-sendrift .window-secure { color: #7b8aa1; }
+.mentora-composition { position: relative; width: 100%; height: 100%; min-height: 460px; }
+.mentora-phone { position: absolute; overflow: hidden; border: 1px solid var(--project-phone-border); border-radius: 24px; background: #1e1f22; box-shadow: 0 18px 35px -15px var(--project-visual-shadow); }
+.mentora-phone img { width: 100%; height: auto; display: block; }
+.mentora-phone-back { width: 155px; left: 25%; top: 67px; transform: translateX(-50%) rotate(-7deg); }
+.mentora-phone-quota { width: 155px; left: 75%; top: 67px; transform: translateX(-50%) rotate(7deg); }
+.mentora-phone-front { width: 180px; left: 50%; top: 44px; z-index: 1; transform: translateX(-50%); }
+.forge-deployment { width: 100%; padding: 0 28px 0 14px; }
+.forge-caption { display: flex; align-items: center; justify-content: center; gap: 7px; color: var(--project-subtle); font-size: 10px; letter-spacing: .04em; }
+.forge-caption-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--project-subtle); }
+.forge-diagram { display: block; width: 100%; height: auto; margin: 22px 0 12px; overflow: visible; }
+.forge-line { stroke: var(--forge-line); stroke-width: 1.2; }
+.forge-label { fill: var(--project-subtle); font-size: 11px; }
+.forge-node-name { fill: var(--project-text); font-size: 15px; font-weight: 500; }
+.forge-status { fill: currentColor; font-size: 11px; }
+.forge-blue { color: var(--forge-blue); }
+.forge-green { color: var(--forge-green); }
+.forge-route { stroke-width: 1.7; stroke-dasharray: 5 26; animation: forge-flow 3s linear infinite, forge-switch 12s step-end infinite; }
+.forge-route-blue { stroke: var(--forge-blue); }
+.forge-route-green { stroke: var(--forge-green); animation-delay: 0s, -6s; }
+.forge-incoming { stroke: var(--project-muted); stroke-width: 1.5; stroke-dasharray: 4 35; animation: forge-flow 3s linear infinite; }
+.forge-blue-active, .forge-green-standby { animation: forge-switch 12s step-end infinite; }
+.forge-blue-standby, .forge-green-active { opacity: 0; animation: forge-switch 12s step-end -6s infinite; }
+.forge-footnote { display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--project-subtle); font-size: 10px; letter-spacing: .015em; }
+.forge-footnote > span { width: 5px; height: 5px; border-radius: 50%; background: var(--forge-green); }
+.project-slide:not(.is-active) .forge-deployment * { animation-play-state: paused; }
+@keyframes forge-flow { to { stroke-dashoffset: -124; } }
+@keyframes forge-switch { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.projects-controls { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 8px var(--projects-inset) 0; }
+.project-selectors { display: flex; align-items: center; gap: 21px; }
+.project-selectors button { display: flex; align-items: center; gap: 7px; min-height: 44px; cursor: pointer; color: var(--subtle); font-size: 11px; transition: color 180ms; }
+.selector-dot { width: 4px; height: 4px; border-radius: 50%; background: currentColor; }
+.project-selectors button.is-active { color: var(--fg); }
+.project-selectors button:hover { color: var(--fg); }
+.projects-navigation { display: flex; align-items: center; gap: 8px; }
+.projects-pagination { display: flex; gap: 9px; margin-right: 14px; color: var(--subtle); font-size: 11px; font-variant-numeric: tabular-nums; font-family: var(--font-mono), monospace; }
+.projects-pagination > span:nth-child(2) { color: var(--fg); }
+.pagination-divider { opacity: .5; }
+.project-arrow { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 1px solid var(--border-dashed); border-radius: 50%; color: var(--fg); cursor: pointer; transition: background 180ms, border-color 180ms; }
+.project-arrow:hover:not([aria-disabled="true"]) { background: var(--chip-bg); border-color: var(--muted); }
+.project-arrow[aria-disabled="true"] { opacity: .25; cursor: default; }
+
+@media (max-width: 1000px) {
+  .project-card { grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); }
+  .project-copy { padding-left: 27px; }
+  .project-intro h3 { font-size: 34px; }
+  .project-tagline { font-size: 17px; }
+  .project-description { font-size: 12px; }
+  .product-composition { padding-left: 12px; padding-right: 20px; }
+  .window-secure { display: none; }
+  .mentora-phone-back, .mentora-phone-quota { width: 140px; top: 76px; }
+  .mentora-phone-front { width: 160px; top: 55px; }
+  .forge-deployment { padding-right: 18px; padding-left: 10px; }
+}
+@media (max-width: 760px) {
+  .projects-section { width: calc(100vw - 32px); --projects-inset: 8px; }
+  .projects-heading { margin-bottom: 24px; }
+  .projects-heading h2 { font-size: 26px; }
+  .projects-viewport { gap: 12px; }
+  .project-card { display: flex; flex-direction: column-reverse; height: 716px; }
+  .project-copy { flex: 1; padding: 24px 25px; border-top: 1px solid var(--project-line); }
+  .project-category { font-size: 9px; }
+  .project-intro { margin-top: 20px; }
+  .project-intro h3 { font-size: 32px; }
+  .project-tagline { max-width: none; font-size: 17px; margin-top: 7px; }
+  .project-description { max-width: 520px; font-size: 13px; line-height: 1.65; margin-top: 12px; }
+  .project-technologies { max-width: none; margin-top: 15px; margin-bottom: 17px; }
+  .project-github { padding-top: 3px; }
+  .project-visual { flex: 0 0 300px; min-height: 300px; }
+  .product-composition { min-height: 300px; padding: 22px 23px 43px; }
+  .product-window { max-width: 550px; }
+  .product-window-bar { font-size: 6px; height: 22px; }
+  .visual-caption { bottom: 16px; font-size: 9px; }
+  .mentora-composition { min-height: 300px; height: 300px; }
+  .mentora-phone { border-radius: 20px; }
+  .mentora-phone-back { width: 125px; left: 22%; top: 32px; }
+  .mentora-phone-quota { width: 125px; left: 78%; top: 32px; }
+  .mentora-phone-front { width: 145px; top: 12px; }
+  .mentora-composition .visual-caption { display: none; }
+  .forge-deployment { max-width: 510px; padding: 20px; }
+  .forge-diagram { margin: 8px 0; }
+  .forge-node-name { font-size: 23px; }
+  .forge-status { font-size: 20px; }
+  .forge-label { font-size: 18px; }
+  .forge-caption, .forge-footnote { font-size: 9px; }
+  .projects-controls { gap: 8px; }
+  .project-selectors { gap: 15px; }
+  .selector-name { display: none; }
+  .project-selectors button { justify-content: center; width: 16px; min-height: 44px; }
+  .selector-dot { width: 5px; height: 5px; }
+  .project-selectors button.is-active .selector-dot { width: 16px; border-radius: 3px; }
+  .projects-pagination { margin-right: 8px; }
+  .project-arrow { width: 40px; height: 40px; }
+}
+@media (max-width: 420px) {
+  .project-card { height: 704px; }
+  .project-copy { padding: 23px 21px; }
+  .project-visual { flex-basis: 260px; min-height: 260px; }
+  .product-composition { min-height: 260px; padding: 18px 16px 38px; }
+  .product-composition-sealed .product-window { width: 430px; flex-shrink: 0; margin-left: 72px; }
+  .product-composition-sealed .sealed-screenshot { aspect-ratio: 2048 / 960; }
+  .product-composition-sealed .sealed-screenshot img { transform: translateY(-8%); }
+  .mentora-composition { height: 260px; min-height: 260px; }
+  .mentora-phone { border-radius: 17px; }
+  .mentora-phone-back, .mentora-phone-quota { width: 105px; top: 28px; }
+  .mentora-phone-front { width: 125px; top: 7px; }
+  .forge-deployment { padding: 18px 10px; }
+  .forge-diagram { margin: 14px 0 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .projects-viewport { scroll-behavior: auto; }
+  .forge-deployment * { animation: none !important; }
+  .forge-route-green, .forge-blue-standby, .forge-green-active { opacity: 0; }
+  .forge-blue-active, .forge-green-standby { opacity: 1; }
+}

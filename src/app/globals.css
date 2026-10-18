@@ -261,17 +261,15 @@ body {
   .project-github { grid-row: 5; margin: 0; min-height: 36px; padding-top: 12px; border-top: 1px solid var(--project-line); }
   .project-visual { grid-row: 2; min-height: clamp(156px, 47vw, 212px); border-radius: 9px; background: var(--forge-node-surface); }
   .project-sealed .project-visual, .project-sendrift .project-visual { background: transparent; }
+  .project-sealed .project-visual { aspect-ratio: 8 / 5; }
   .visual-caption { display: none; }
   .product-composition { position: absolute; inset: 0; min-height: 0; height: 100%; padding: 0; }
   .product-window { display: flex; flex-direction: column; height: 100%; max-width: none; border-radius: 8px; transform: none; }
   .product-window-bar { flex: 0 0 18px; gap: 10px; padding: 0 7px; font-size: 6px; }
   .window-dots { gap: 3px; }
   .window-dots i { width: 3px; height: 3px; }
-  .sealed-screenshot { flex: 1; min-height: 0; aspect-ratio: auto; }
-  /* Show the report form at a useful scale rather than shrinking the whole desktop. */
-  .sealed-screenshot img { width: 160%; max-width: none; margin-left: -29%; transform: translateY(-16.5%); }
-  .project-sendrift .product-window { height: auto; }
-  .sendrift-screenshot { flex: none; }
+  .project-sealed .product-window, .project-sendrift .product-window { height: auto; }
+  .sealed-screenshot, .sendrift-screenshot { flex: none; }
   .mentora-composition { position: absolute; inset: 0; min-height: 0; height: 100%; }
   .mentora-phone { border-radius: 14px; }
   .mentora-phone-back { width: min(27%, 90px); left: 22%; top: 50%; transform: translate(-50%, -50%) rotate(-7deg); }

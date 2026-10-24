@@ -8,20 +8,20 @@ import { ForgeDeployment } from "./ForgeDeployment";
 
 const projects = [
   {
-    name: "Forge",
-    category: "Infrastructure",
-    tagline: "Deploy without the downtime.",
-    description: "Single-server container orchestration using only Python’s standard library. Zero-downtime blue/green deploys via Traefik, tested with 235k+ requests without dropped connections.",
-    technologies: ["Python", "Docker", "SQLite · WAL", "Traefik"],
-    github: "https://github.com/alastrm/Forge",
-  },
-  {
     name: "Sealed",
     category: "Privacy & security",
     tagline: "A voice, without a name.",
     description: "Anonymous reporting prototype with WebAssembly encryption in browser memory. An untrusted backend relays ciphertext without plaintext access.",
     technologies: ["FastAPI", "Next.js", "libsodium (WASM)", "X25519", "BLAKE2b", "Argon2id", "TypeScript"],
     github: "https://github.com/alastrm/Sealed",
+  },
+  {
+    name: "Forge",
+    category: "Infrastructure",
+    tagline: "Deploy without the downtime.",
+    description: "Single-server container orchestration using only Python’s standard library. Zero-downtime blue/green deploys via Traefik, tested with 235k+ requests without dropped connections.",
+    technologies: ["Python", "Docker", "SQLite · WAL", "Traefik"],
+    github: "https://github.com/alastrm/Forge",
   },
   {
     name: "Sendrift",
